@@ -18,6 +18,22 @@ function handleForm(e) {
   const gender = document.getElementById('gender').value;
   const phone = document.getElementById('phone').value;
 
+  
+  if (/\s/.test(fullName)) {
+    window.alert("UserName should be without whitespaces")
+    return;
+  }
+
+  if (!/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password)) {
+    window.alert("Password should be at least [8 digits][1 uppercase][1 special characters]");
+    return;
+  }
+
+  if (!/^07\d{8}$/.test(phone)){
+    window.alert("Phone number must be 10 digits long and start with '07'.");
+    return 
+  }
+
   // Collect Checkbox Values
   const orderType = [];
   if (document.getElementById('shawarma').checked) orderType.push('Shawarma');
